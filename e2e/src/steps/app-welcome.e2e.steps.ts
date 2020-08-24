@@ -9,10 +9,11 @@ Before(() => {
 });
 
 Given(/^I'm a user of the app$/, async () => {
-    await page.navigateTo();
 });
 
-When(/^I arrive of the app$/, () => { });
+When(/^I arrive of the app$/, async () => {
+    await page.navigateTo();
+});
 
 Then(/^I'm greeted by a welcome screen$/, async () => {
     expect(await page.getWelcomeText()).to.equal('Welcome to the quizz ! You\'ll be asked a series of "Yes or No" questions. Answer as many as you can in the allowed time ! Good luck !');

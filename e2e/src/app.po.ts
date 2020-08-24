@@ -13,8 +13,15 @@ export class AppPage {
     return element(by.css('app-root h3')).getText();
   }
 
+  getCurrentQuestionText() {
+    return element(by.css('app-root h3')).getText();
+  }
 
   findButtonByText(text: string) {
     return element(by.buttonText(text));
+  }
+
+  navigateToQuiz() {
+    return browser.get('/quiz');
   }
 }
