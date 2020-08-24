@@ -8,4 +8,13 @@ export class AppPage {
   getTitleText() {
     return element(by.css('app-root h1')).getText();
   }
+
+  getWelcomeText() {
+    return element(by.css('app-root h3')).getText();
+  }
+
+
+  findButtonByText(text: string) {
+    return element(by.buttonText(text));
+  }
 }
