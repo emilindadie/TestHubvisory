@@ -1,0 +1,14 @@
+sudo: required
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+  - node_modules
+script:
+  - npm test
+  - npm e2e
+addons:
+  chrome: stable
+before_install:
+  - export CHROME_BIN=/usr/bin/google-chrome
