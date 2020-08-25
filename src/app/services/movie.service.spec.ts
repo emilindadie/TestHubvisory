@@ -1,6 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MovieService } from './movie.service';
+import { of } from 'rxjs';
+import { mockPopularMoviesResponse } from 'test-files/movie';
 
 describe('MovieService', () => {
     let service: MovieService;
@@ -18,7 +20,7 @@ describe('MovieService', () => {
     });
 
     it('should load popular movie', async () => {
-        const response: any = service.loadPopularMovies();
-        expect(response.results).toBeTruthy();
+        spyOn(service, 'loadPopularMovies').and.returnValue(of(mockPopularMoviesResponse));
+        service.loadPopularMovies().subscribe(response => expect(response.results.length).toBeTruthy());
     });
 });

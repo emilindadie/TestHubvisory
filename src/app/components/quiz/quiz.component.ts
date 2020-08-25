@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
   selector: 'app-quiz',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuizComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: MovieService) { }
 
   ngOnInit() {
+    this.service.loadPopularMovies().subscribe(res => console.log(res));
   }
 
 }

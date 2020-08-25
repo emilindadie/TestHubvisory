@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { QuizComponent } from './quiz.component';
+import { MovieService } from 'src/app/services/movie.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('QuizComponent', () => {
   let component: QuizComponent;
@@ -8,9 +10,11 @@ describe('QuizComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QuizComponent ]
+      imports: [HttpClientTestingModule],
+      declarations: [QuizComponent],
+      providers: [MovieService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
