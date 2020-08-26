@@ -23,4 +23,8 @@ describe('MovieService', () => {
         spyOn(service, 'loadPopularMovies').and.returnValue(of(mockPopularMoviesResponse));
         service.loadPopularMovies().subscribe(response => expect(response.results.length).toBeTruthy());
     });
+
+    it('should load credit of one movie', async () => {
+        service.loadCredits(mockPopularMoviesResponse.results[0].id).subscribe(response => expect(response.cast.length).toBeTruthy());
+    });
 });

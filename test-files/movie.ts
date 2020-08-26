@@ -1,4 +1,4 @@
-import { IPopularMovieResponse } from 'src/app/models/popular-movies.response';
+import { IPopularMovieResponse } from '../src/app/models/popular-movies.response.model';
 
 export const mockPopularMoviesResponse: IPopularMovieResponse = {
     page: 1,
