@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MovieService } from './movie.service';
 import { of } from 'rxjs';
-import { mockPopularMoviesResponse } from 'test-files/movie';
+import { mockPopularMoviesResponse, mockMovieCreditsResponse } from 'test-files/movie';
 
 describe('MovieService', () => {
     let service: MovieService;
@@ -25,6 +25,7 @@ describe('MovieService', () => {
     });
 
     it('should load credit of one movie', async () => {
+        spyOn(service, 'loadCredits').and.returnValue(of(mockMovieCreditsResponse));
         service.loadCredits(mockPopularMoviesResponse.results[0].id).subscribe(response => expect(response.cast.length).toBeTruthy());
     });
 });

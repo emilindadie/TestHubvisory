@@ -12,6 +12,7 @@ export class QuizComponent implements OnInit {
 
   ngOnInit() {
     this.service.loadPopularMovies().subscribe(res => console.log(res));
+    this.service.loadCredits(605116).subscribe(res => console.log(res));
   }
 
 }

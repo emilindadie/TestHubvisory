@@ -1,7 +1,7 @@
 import { ICast } from './cast.model.i';
 import { ICrew } from './crew.model.i';
 
-export interface IMovieCredirResponse {
+export interface IMovieCreditsResponse {
     id: number,
     cast: ICast[],
     crew: ICrew[],

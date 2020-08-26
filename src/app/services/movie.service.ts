@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { IPopularMovieResponse } from '../models/popular-movies.response.model';
 import { environment } from './../../environments/environment';
-import { IMovieCredirResponse } from '../models/movie-credit.response.model';
+import { IMovieCreditsResponse } from '../models/movie-credit.response.model';
 
 @Injectable()
 export class MovieService {
@@ -13,7 +13,7 @@ export class MovieService {
         return this.http.get<IPopularMovieResponse>(`${environment.apiBaseUrl}/movie/popular`);
     }
 
-    loadCredits(movieId: number): Observable<IMovieCredirResponse> {
-        return null;
+    loadCredits(movieId: number): Observable<IMovieCreditsResponse> {
+        return this.http.get<IMovieCreditsResponse>(`${environment.apiBaseUrl}/movie/${movieId}/credits`);
     }
 }
