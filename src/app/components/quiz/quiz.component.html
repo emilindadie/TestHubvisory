@@ -1,5 +1,7 @@
 <div class="quiz-container">
   <h1>Quiz page</h1>
+
+  <h3>Did {{ (rondomActor$ | async)?.name }} has play in {{ (rondomMovie$ | async)?.title }}? </h3>
   <button>No</button>
   <button>Yes</button>
 </div>

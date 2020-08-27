@@ -1,5 +1,7 @@
 import { IPopularMovieResponse } from '../src/app/models/popular-movies.response.model';
 import { IMovieCreditsResponse } from 'src/app/models/movie-credit.response.model';
+import { IMovie } from 'src/app/models/movie.models.i';
+import { ICast } from 'src/app/models/cast.model.i';
 
 export const mockPopularMoviesResponse: IPopularMovieResponse = {
     page: 1,
@@ -29,6 +31,40 @@ export const mockPopularMoviesResponse: IPopularMovieResponse = {
     total_results: 1
 };
 
+
+export const mockRandomMovie: IMovie = {
+    popularity: 237.38,
+    vote_count: 727,
+    video: false,
+    poster_path: "/bOKjzWDxiDkgEQznhzP4kdeAHNI.jpg",
+    id: 605116,
+    adult: false,
+    backdrop_path: "/qVygtf2vU15L2yKS4Ke44U4oMdD.jpg",
+    original_language: "en",
+    original_title: "Project Power",
+    genre_ids: [
+        28,
+        80,
+        878
+    ],
+    title: "Project Power",
+    vote_average: 6.8,
+    overview: "An ex-soldier, a teen and a cop collide in New Orleans as they hunt for the source behind a dangerous new pill that grants users temporary superpowers.",
+    release_date: "2020-08-14"
+};
+
+
+
+export const mockRandomActor: ICast = {
+    cast_id: 8,
+    character: 'Art',
+    credit_id: '5cec34a1c3a3685a161f83f7',
+    gender: 2,
+    id: 134,
+    name: 'Jamie Foxx',
+    order: 0,
+    profile_path: '/hPwCMEq6jLAidsXAX5BfoYgIfg2.jpg'
+};
 
 export const mockMovieCreditsResponse: IMovieCreditsResponse = {
     id: 23333,
