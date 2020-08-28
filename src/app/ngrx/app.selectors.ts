@@ -17,3 +17,9 @@ export const randomActorSelector$ = createSelector(
     getAppFeatureState,
     (state: IAppState) => state.actors[Math.floor(Math.random() * state.actors.length)]
 );
+
+
+export const currentGameScoreSelector$ = createSelector(
+    getAppFeatureState,
+    (state: IAppState) => state.currentGameScore
+);

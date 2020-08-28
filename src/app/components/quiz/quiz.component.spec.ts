@@ -8,7 +8,7 @@ import { IAppState } from 'src/app/ngrx/app.state';
 import { IMovie } from 'src/app/models/movie.models.i';
 import { MemoizedSelector } from '@ngrx/store';
 import { ICast } from 'src/app/models/cast.model.i';
-import { randomMovieSelector$, randomActorSelector$ } from 'src/app/ngrx/app.selectors';
+import { randomMovieSelector$, randomActorSelector$, currentGameScoreSelector$ } from 'src/app/ngrx/app.selectors';
 import { mockRandomMovie, mockRandomActor } from 'test-files/movie';
 
 describe('QuizComponent', () => {
@@ -18,7 +18,7 @@ describe('QuizComponent', () => {
 
   let mockRandomMovieSelector$: MemoizedSelector<IAppState, IMovie>;
   let mockRandomActorSelector$: MemoizedSelector<IAppState, ICast>;
-
+  let mockCurrentGameScoreSelector$: MemoizedSelector<IAppState, number>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -46,6 +46,11 @@ describe('QuizComponent', () => {
     mockRandomActorSelector$ = mockStore.overrideSelector(
       randomActorSelector$,
       mockRandomActor
+    );
+
+    mockCurrentGameScoreSelector$ = mockStore.overrideSelector(
+      currentGameScoreSelector$,
+      10
     );
 
     fixture.detectChanges();

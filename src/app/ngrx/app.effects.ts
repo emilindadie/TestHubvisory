@@ -23,7 +23,7 @@ export class AppEffects {
         ofType('LOAD_MOVIES'),
         mergeMap(() => this.movieService.loadPopularMovies()
             .pipe(
-                map(response => response && response.results ? ({ type: 'SUCCESSFULLY_LOAD_MOVIES', payload: { movies: response.results } }) :
+                map(response => response && response.results ? ({ type: 'SUCCESSFULLY_LOAD_MOVIES', payload: { movies: response.results.slice(0, 16) } }) :
                     ({ type: 'FAILED_LOAD_MOVIES' })),
                 catchError(() => of(({ type: 'FAILED_LOAD_MOVIES' }))),
             )))
@@ -43,10 +43,21 @@ export class AppEffects {
     );
 
 
+    checkQuestion$ = createEffect(() => this.actions$.pipe(
+        ofType('CHECK_ANSWER'),
+        mergeMap((data: IBaseAction<IAppAction>) => this.movieService.loadCredits(data.payload.answer.movie_id)
+            .pipe(
+                map(response => response && response.cast.some(cast => cast.id === data.payload.answer.cast.id) === data.payload.answer.value ? ({ type: 'GOOD_ANSWER' }) :
+                    ({ type: 'BAD_ANSWER' })),
+                catchError(() => of(({ type: 'ERROR_ANSWER' }))),
+            )))
+    );
 
-    contructArrayAction(array: IMovieCreditsResponse[]) {
-        const arr: ICast[] = [];
-        array.map(data => arr.push(...data.cast));
-        return arr;
+    contructArrayAction(movieCreditResponse: IMovieCreditsResponse[]) {
+        const finalActors: ICast[] = [];
+        movieCreditResponse.map(data =>
+            data.cast.slice(0, 1).map((actor, index) => finalActors.some(finalActor => finalActor.id === actor.id) === false ? finalActors.push(actor) : actor
+            ));
+        return finalActors;
     }
 }

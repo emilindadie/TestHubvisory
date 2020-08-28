@@ -6,4 +6,6 @@ export interface IAppState {
     actors: ICast[];
     hasSuccessLoadMovies: boolean;
     hasSuccessLoadActors: boolean;
+    currentGameScore: number;
+    highScore: number;
 }

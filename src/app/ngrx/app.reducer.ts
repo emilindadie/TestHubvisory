@@ -6,7 +6,9 @@ const initialState: IAppState = {
     actors: [],
     movies: [],
     hasSuccessLoadActors: null,
-    hasSuccessLoadMovies: null
+    hasSuccessLoadMovies: null,
+    currentGameScore: 0,
+    highScore: 0,
 }
 
 export function AppReducer(state: IAppState = initialState, action: IBaseAction<IAppAction>): IAppState {
@@ -34,6 +36,17 @@ export function AppReducer(state: IAppState = initialState, action: IBaseAction<
             return {
                 ...state,
                 hasSuccessLoadActors: false
+            };
+
+        case 'GOOD_ANSWER':
+            return {
+                ...state,
+                currentGameScore: state.currentGameScore + 1
+            };
+
+        case 'BAD_ANSWER':
+            return {
+                ...state,
             };
 
         default:
