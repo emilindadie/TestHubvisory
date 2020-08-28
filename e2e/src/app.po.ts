@@ -13,8 +13,8 @@ export class AppPage {
     return element(by.css('app-root h3')).getText();
   }
 
-  getGameOverText() {
-    return element(by.css('app-root h3')).getText();
+  getGameOverTitle() {
+    return element(by.css('app-root h1')).getText();
   }
 
   getCurrentQuestionText() {

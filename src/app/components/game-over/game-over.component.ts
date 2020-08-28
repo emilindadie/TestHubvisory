@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { currentGameScoreSelector$ } from 'src/app/ngrx/app.selectors';
+import { select, Store } from '@ngrx/store';
+import { IAppState } from 'src/app/ngrx/app.state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-game-over',
@@ -7,9 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameOverComponent implements OnInit {
 
-  constructor() { }
+  totalGameScore$: Observable<number>;
+
+  constructor(private store$: Store<IAppState>) { }
 
   ngOnInit() {
+    this.totalGameScore$ = this.store$.pipe(select(currentGameScoreSelector$));
   }
 
 }

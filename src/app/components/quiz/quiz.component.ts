@@ -6,6 +6,7 @@ import { ICast } from 'src/app/models/cast.model.i';
 import { IMovie } from 'src/app/models/movie.models.i';
 import { randomMovieSelector$, randomActorSelector$, currentGameScoreSelector$ } from 'src/app/ngrx/app.selectors';
 import { filter, tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
@@ -26,7 +27,7 @@ export class QuizComponent implements OnInit {
 
 
 
-  constructor(private store$: Store<IAppState>) { }
+  constructor(private store$: Store<IAppState>, private router: Router) { }
 
   ngOnInit() {
     this.store$.dispatch({ type: 'LOAD_MOVIES' });
@@ -35,7 +36,7 @@ export class QuizComponent implements OnInit {
     this.currentGameScore$ = this.store$.pipe(select(currentGameScoreSelector$));
     setInterval(() => {
       if (this.timer == 0) {
-
+        this.router.navigate(['/game-over']);
       }
       this.timer--;
     }, 1000)

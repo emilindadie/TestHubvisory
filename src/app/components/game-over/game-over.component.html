@@ -1,3 +1,11 @@
-<p>
-  game-over works!
-</p>
+<div class="game-over-container">
+  <div class="game-over-container-title">
+    <h1>Game over!</h1>
+  </div>
+  <div class="game-over-container-score">
+    <span>Total Score : {{ totalGameScore$ | async }}</span>
+  </div>
+  <div class="game-over-container-button">
+    <button>Retry</button>
+  </div>
+</div>

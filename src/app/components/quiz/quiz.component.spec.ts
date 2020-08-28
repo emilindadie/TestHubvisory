@@ -10,6 +10,7 @@ import { MemoizedSelector } from '@ngrx/store';
 import { ICast } from 'src/app/models/cast.model.i';
 import { randomMovieSelector$, randomActorSelector$, currentGameScoreSelector$ } from 'src/app/ngrx/app.selectors';
 import { mockRandomMovie, mockRandomActor } from 'test-files/movie';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('QuizComponent', () => {
   let component: QuizComponent;
@@ -22,7 +23,7 @@ describe('QuizComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
       declarations: [QuizComponent],
       providers: [MovieService,
         provideMockStore()
