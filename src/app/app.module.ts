@@ -15,6 +15,8 @@ import { AppReducer } from './ngrx/app.reducer';
 import { environment } from 'src/environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { GameOverComponent } from './components/game-over/game-over.component';
+import { CookiesService } from './services/cookie.service';
+import { CookieService } from 'angular2-cookie';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,7 @@ import { GameOverComponent } from './components/game-over/game-over.component';
       logOnly: !environment.production, // Restrict extension to log-only mode
     }),
   ],
-  providers: [MovieService,
+  providers: [MovieService, CookiesService, CookieService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: MyApiKeyInterceptor,

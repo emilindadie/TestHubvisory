@@ -5,6 +5,7 @@ export interface IAppAction {
     movies: IMovie[];
     actors: ICast[];
     answer: IAnswerAction;
+    highScore: number;
 }
 
 

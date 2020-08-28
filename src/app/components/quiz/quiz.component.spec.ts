@@ -11,6 +11,8 @@ import { ICast } from 'src/app/models/cast.model.i';
 import { randomMovieSelector$, randomActorSelector$, currentGameScoreSelector$ } from 'src/app/ngrx/app.selectors';
 import { mockRandomMovie, mockRandomActor } from 'test-files/movie';
 import { RouterTestingModule } from '@angular/router/testing';
+import { CookiesService } from 'src/app/services/cookie.service';
+import { CookieService } from 'angular2-cookie';
 
 describe('QuizComponent', () => {
   let component: QuizComponent;
@@ -25,7 +27,7 @@ describe('QuizComponent', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, RouterTestingModule],
       declarations: [QuizComponent],
-      providers: [MovieService,
+      providers: [MovieService, CookiesService, CookieService,
         provideMockStore()
       ]
     })

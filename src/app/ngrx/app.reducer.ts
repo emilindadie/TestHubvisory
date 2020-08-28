@@ -13,9 +13,17 @@ const initialState: IAppState = {
 
 export function AppReducer(state: IAppState = initialState, action: IBaseAction<IAppAction>): IAppState {
     switch (action.type) {
+
+        case 'LOAD_HIGH_SCORE':
+            return {
+                ...state,
+                highScore: action.payload.highScore
+            };
+
         case 'SUCCESSFULLY_LOAD_MOVIES':
             return {
                 ...state,
+                currentGameScore: 0,
                 movies: action.payload.movies,
                 hasSuccessLoadMovies: true,
             };

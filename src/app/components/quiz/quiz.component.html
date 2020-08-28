@@ -4,7 +4,9 @@
   </div>
   <div class="quiz-container-score">
     <span>Score : {{ currentGameScore$ | async }}</span>
-    <span>Highscore : {{ currentGameScore$ | async }}</span>
+    <ng-container *ngIf="highScore$ | async as value">
+      <span *ngIf="value !== 0">HighScore : {{ value }}</span>
+    </ng-container>
   </div>
   <div class="quiz-container-title">
     <h1>Quiz page</h1>

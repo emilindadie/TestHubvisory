@@ -23,3 +23,9 @@ export const currentGameScoreSelector$ = createSelector(
     getAppFeatureState,
     (state: IAppState) => state.currentGameScore
 );
+
+
+export const highScoreSelector$ = createSelector(
+    getAppFeatureState,
+    (state: IAppState) => state.highScore
+);

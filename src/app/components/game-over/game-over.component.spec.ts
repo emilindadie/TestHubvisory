@@ -5,6 +5,9 @@ import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { MemoizedSelector } from '@ngrx/store';
 import { IAppState } from 'src/app/ngrx/app.state';
 import { currentGameScoreSelector$ } from 'src/app/ngrx/app.selectors';
+import { CookiesService } from 'src/app/services/cookie.service';
+import { CookieService } from 'angular2-cookie';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('GameOverComponent', () => {
   let component: GameOverComponent;
@@ -15,8 +18,10 @@ describe('GameOverComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [GameOverComponent],
       providers: [
+        CookiesService, CookieService,
         provideMockStore()
       ]
     })

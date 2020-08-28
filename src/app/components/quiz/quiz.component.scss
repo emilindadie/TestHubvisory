@@ -12,6 +12,10 @@
     &-score {
         position: absolute;
         right: 47px;
+
+        :first-child{
+            margin-right: 20px;
+        }
     }
 
     &-question {
