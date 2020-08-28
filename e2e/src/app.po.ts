@@ -13,6 +13,10 @@ export class AppPage {
     return element(by.css('app-root h3')).getText();
   }
 
+  getGameOverText() {
+    return element(by.css('app-root h3')).getText();
+  }
+
   getCurrentQuestionText() {
     return element(by.css('app-root h3')).getText();
   }
@@ -24,4 +28,9 @@ export class AppPage {
   navigateToQuiz() {
     return browser.get('/quiz');
   }
+
+  navigateToGameOver() {
+    return browser.get('/game-over');
+  }
+
 }

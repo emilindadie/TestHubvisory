@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { QuizComponent } from './components/quiz/quiz.component';
+import { GameOverComponent } from './components/game-over/game-over.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,9 @@ const routes: Routes = [
   },
   {
     path: 'quiz', component: QuizComponent,
+  },
+  {
+    path: 'game-over', component: GameOverComponent,
   },
   {
     path: '**',

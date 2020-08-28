@@ -14,12 +14,14 @@ import { AppEffects } from './ngrx/app.effects';
 import { AppReducer } from './ngrx/app.reducer';
 import { environment } from 'src/environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { GameOverComponent } from './components/game-over/game-over.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    QuizComponent
+    QuizComponent,
+    GameOverComponent
   ],
   imports: [
     HttpClientModule,
