@@ -4,11 +4,15 @@
     text-align: center;
 
 
+     &-timer {
+        position: absolute;
+        left: 10px;
+    }
+
     &-score {
         position: absolute;
         right: 47px;
     }
-
 
     &-question {
         h3 {

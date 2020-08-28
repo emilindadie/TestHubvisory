@@ -22,6 +22,9 @@ export class QuizComponent implements OnInit {
   currentGameScore$: Observable<number>;
 
 
+  timer: number = 60;
+
+
 
   constructor(private store$: Store<IAppState>) { }
 
@@ -30,6 +33,12 @@ export class QuizComponent implements OnInit {
     this.rondomMovie$ = this.store$.pipe(select(randomMovieSelector$), filter(movie => !!movie), tap((movie) => this.rondomMovie = movie));
     this.rondomActor$ = this.store$.pipe(select(randomActorSelector$), filter(actor => !!actor), tap((actor) => this.rondomActor = actor));
     this.currentGameScore$ = this.store$.pipe(select(currentGameScoreSelector$));
+    setInterval(() => {
+      if (this.timer == 0) {
+
+      }
+      this.timer--;
+    }, 1000)
   }
 
 
