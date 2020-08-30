@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IAppState } from 'src/app/ngrx/app.state';
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { ICast } from 'src/app/models/cast.model.i';
 import { IMovie } from 'src/app/models/movie.models.i';
 import { randomMovieSelector$, randomActorSelector$, currentGameScoreSelector$, highScoreSelector$ } from 'src/app/ngrx/app.selectors';
@@ -12,7 +12,7 @@ import { CookiesService } from 'src/app/services/cookie.service';
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.scss']
+  styleUrls: ['./quiz.component.scss'],
 })
 export class QuizComponent implements OnInit {
 
@@ -26,6 +26,7 @@ export class QuizComponent implements OnInit {
 
 
   timer: number = 60;
+  timeColor$: BehaviorSubject<string> = new BehaviorSubject('quiz-container-timer-green');
 
 
 
@@ -42,6 +43,12 @@ export class QuizComponent implements OnInit {
     this.highScore$ = this.store$.pipe(select(highScoreSelector$));
 
     setInterval(() => {
+      if (this.timer == 30) {
+        this.timeColor$.next('quiz-container-timer-orange');
+      }
+      if (this.timer == 15) {
+        this.timeColor$.next('quiz-container-timer-red');
+      }
       if (this.timer == 0) {
         this.router.navigate(['/game-over']);
       }
@@ -51,6 +58,14 @@ export class QuizComponent implements OnInit {
 
   answer(value: boolean) {
     this.store$.dispatch({ type: 'CHECK_ANSWER', payload: { answer: { cast: this.rondomActor, movie_id: this.rondomMovie.id, value } } });
+  }
+
+  swipeLeft() {
+    this.store$.dispatch({ type: 'CHECK_ANSWER', payload: { answer: { cast: this.rondomActor, movie_id: this.rondomMovie.id, value: false } } });
+  }
+
+  swipeRight() {
+    this.store$.dispatch({ type: 'CHECK_ANSWER', payload: { answer: { cast: this.rondomActor, movie_id: this.rondomMovie.id, value: true } } });
   }
 
 }

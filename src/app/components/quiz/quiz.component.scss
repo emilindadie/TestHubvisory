@@ -3,15 +3,34 @@
     display: flex;
     text-align: center;
 
+    &-title {
+        margin-top: 20px;
+    }
 
      &-timer {
         position: absolute;
         left: 10px;
+        font-size: 20px;
+        top: 10px;
+
+        &-green {
+            color: green;
+        }
+
+        &-orange {
+            color: orange;
+        }
+
+        &-red {
+            color: red;
+        }
     }
 
     &-score {
         position: absolute;
         right: 47px;
+        font-size: 20px;
+        top: 10px;
 
         :first-child{
             margin-right: 20px;
