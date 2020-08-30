@@ -8,7 +8,7 @@ import { IAppState } from 'src/app/ngrx/app.state';
 import { IMovie } from 'src/app/models/movie.models.i';
 import { MemoizedSelector } from '@ngrx/store';
 import { ICast } from 'src/app/models/cast.model.i';
-import { randomMovieSelector$, randomActorSelector$, currentGameScoreSelector$ } from 'src/app/ngrx/app.selectors';
+import { randomMovieSelector$, randomActorSelector$, currentGameScoreSelector$, highScoreSelector$ } from 'src/app/ngrx/app.selectors';
 import { mockRandomMovie, mockRandomActor } from 'test-files/movie';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CookiesService } from 'src/app/services/cookie.service';
@@ -22,6 +22,7 @@ describe('QuizComponent', () => {
   let mockRandomMovieSelector$: MemoizedSelector<IAppState, IMovie>;
   let mockRandomActorSelector$: MemoizedSelector<IAppState, ICast>;
   let mockCurrentGameScoreSelector$: MemoizedSelector<IAppState, number>;
+  let mockHighScoreSelector$: MemoizedSelector<IAppState, number>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -55,6 +56,12 @@ describe('QuizComponent', () => {
       currentGameScoreSelector$,
       10
     );
+
+    mockHighScoreSelector$ = mockStore.overrideSelector(
+      highScoreSelector$,
+      90
+    );
+
 
     fixture.detectChanges();
   });

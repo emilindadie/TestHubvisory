@@ -11,11 +11,17 @@
   <div class="quiz-container-title">
     <h1>Quiz page</h1>
   </div>
-  <div class="quiz-container-question">
-    <h3>Did {{ (rondomActor$ | async)?.name }} has play in {{ (rondomMovie$ | async)?.title }}? </h3>
-  </div>
+  <ng-container *ngIf="{actor: rondomActor$ | async, movie: rondomMovie$ | async } as data">
+    <div class="quiz-container-question">
+      <h3>Did {{ (data.actor)?.name }} has play in {{ (data.movie)?.title }}? </h3>
+    </div>
+    <div class="quiz-container-cover">
+      <img src="{{'https://image.tmdb.org/t/p/w500' + data.actor?.profile_path}}" />
+      <img src="{{'https://image.tmdb.org/t/p/w500' + data.movie?.poster_path}}" />
+    </div>
+  </ng-container>
   <div class="quiz-container-button">
-    <button (click)="answer(false)">No</button>
-    <button (click)="answer(true)">Yes</button>
+    <button mat-raised-button (click)="answer(false)">No</button>
+    <button mat-raised-button (click)="answer(true)">Yes</button>
   </div>
 </div>

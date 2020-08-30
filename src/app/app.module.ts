@@ -17,6 +17,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { GameOverComponent } from './components/game-over/game-over.component';
 import { CookiesService } from './services/cookie.service';
 import { CookieService } from 'angular2-cookie';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { CookieService } from 'angular2-cookie';
   imports: [
     HttpClientModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     StoreModule.forRoot({}),
     StoreModule.forFeature('app', AppReducer),
@@ -39,6 +42,7 @@ import { CookieService } from 'angular2-cookie';
       maxAge: 25, // Retains last 25 states
       logOnly: !environment.production, // Restrict extension to log-only mode
     }),
+    MatButtonModule
   ],
   providers: [MovieService, CookiesService, CookieService,
     {

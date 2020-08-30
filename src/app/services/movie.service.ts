@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { IPopularMovieResponse } from '../models/popular-movies.response.model';
 import { environment } from './../../environments/environment';
 import { IMovieCreditsResponse } from '../models/movie-credit.response.model';
